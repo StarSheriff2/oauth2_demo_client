@@ -1,0 +1,22 @@
+<% if flash[:alert] %>
+  <div class="alert alert-warning">
+    <%= flash[:alert] %>
+  </div>
+<% end %>
+<% if flash[:notice] %>
+  <div class="alert alert-success">
+    <%= flash[:notice] %>
+  </div>
+<% end %>
+
+<h1>Home</h1>
+<p>Welcome to the homepage</p>
+
+<p>
+  <% if session[:access_token] %>
+    <%= link_to "Go to Profile", profile_path %>
+  <% else %>
+    <%= link_to "Log in to View Profile", new_session_path %>
+  <% end %>
+</p>
+

@@ -13,7 +13,7 @@
 <p>Welcome to the homepage</p>
 
 <p>
-  <% if session[:access_token] %>
+  <% if session[:token] %>
     <%= link_to "Go to Profile", profile_path %>
   <% else %>
     <%= link_to "Log in to View Profile", new_session_path %>

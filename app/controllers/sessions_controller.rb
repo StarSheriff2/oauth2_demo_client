@@ -46,8 +46,7 @@ class SessionsController < ApplicationController
       redirect_uri: "http://localhost:3001/auth/callback"
     )
 
-    # Store the token securely (e.g., in session)
-    session[:access_token] = token.token
+    session[:token] = token
 
     # Redirect to profile page
     redirect_to profile_path
@@ -60,7 +59,8 @@ class SessionsController < ApplicationController
       ENV.fetch("OAUTH_CLIENT_ID", "wDgTBDxqXpO0gqLXtVW2zEanhOTEopYKPvJJkQUvSMw"),
       ENV.fetch("OAUTH_CLIENT_SECRET", "1D-kA4jDMYKvD4q1Elw7uUEkHN4PsXPmreLKBQR2fd4"),
       site: ENV.fetch("OAUTH_SITE_URL", "http://localhost:3000"),
-      authorize_url: "api/v1/oauth2/authorize", :revoke_url=>"api/v1/oauth2/revoke",
+      authorize_url: "api/v1/oauth2/authorize",
+      revoke_url: "api/v1/oauth2/revoke",
       token_url: "api/v1/oauth2/token"
     )
   end
